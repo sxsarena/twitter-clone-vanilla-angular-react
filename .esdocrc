@@ -1,0 +1,9 @@
+{
+  "title": "frontend-interview",
+  "source": "./source/assets/js",
+  "destination": "./public/doc",
+  "test": {
+    "type": "mocha",
+    "source": "./tests"
+  }
+}
