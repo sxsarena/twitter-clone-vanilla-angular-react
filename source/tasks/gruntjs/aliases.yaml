@@ -1,0 +1,26 @@
+default:
+  - 'sass'
+  - 'autoprefixer'
+  - 'cmq'
+  - 'cssmin'
+  - 'eslint'
+  - 'htmlmin'
+  - 'imagemin'
+  - 'connect'
+  - 'watch'
+
+dev:
+  - 'sass'
+  - 'autoprefixer'
+  - 'cmq'
+  - 'cssmin'
+  - 'eslint'
+  - 'htmlmin'
+  - 'imagemin'
+
+server:
+  - 'connect'
+  - 'watch'
+
+test:
+  - 'karma'
