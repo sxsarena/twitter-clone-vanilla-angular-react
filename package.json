@@ -1,0 +1,24 @@
+{
+  "name": "frontend-interview",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hemersonvianna/frontend-interview.git"
+  },
+  "keywords": [
+    "javascript",
+    "interview",
+    "front-end"
+  ],
+  "author": "Hemerson Vianna <hemerson.lourenco@gmail.com> (http://hemersonvianna.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hemersonvianna/frontend-interview/issues"
+  },
+  "homepage": "https://github.com/hemersonvianna/frontend-interview#readme"
+}
