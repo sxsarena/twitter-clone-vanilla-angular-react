@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/hemersonvianna/frontend-interview#readme",
   "devDependencies": {
+    "chai": "^3.5.0",
     "grunt": "^1.0.1",
     "grunt-autoprefixer": "^3.0.4",
     "grunt-combine-media-queries": "^1.0.20",
@@ -34,7 +35,14 @@
     "grunt-karma": "^2.0.0",
     "grunt-sass": "^1.2.0",
     "imagemin-mozjpeg": "^6.0.0",
+    "karma": "^1.1.1",
+    "karma-chai": "^0.1.0",
+    "karma-mocha": "^1.1.1",
+    "karma-mocha-reporter": "^2.0.4",
+    "karma-phantomjs-launcher": "^1.0.1",
     "load-grunt-config": "^0.19.2",
-    "node-sass": "^3.8.0"
+    "mocha": "^2.5.3",
+    "node-sass": "^3.8.0",
+    "phantomjs-prebuilt": "^2.1.7"
   }
 }
