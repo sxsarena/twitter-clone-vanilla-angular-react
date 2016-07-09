@@ -4,9 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "karma start karma.conf.js",
+    "doc": "esdoc -c .esdocrc",
     "lint": "eslint source/assets/js/**",
-    "doc": "esdoc -c .esdocrc"
+    "postinstall": "npm start && npm run doc",
+    "start": "grunt",
+    "test": "karma start karma.conf.js"
   },
   "repository": {
     "type": "git",

@@ -1,5 +1,29 @@
 # B2W Challenge
 
+## Install, running and documentation
+
+```bash
+npm install
+```
+
+## Running
+
+```bash
+npm start
+```
+
+## Documentation
+
+```bash
+npm run doc
+```
+
+## Tests
+
+```bash
+npm test
+```
+
 ### Mission
 
 Develop a Twitter's clone timeline following the image attached. Your solution must be responsive ([RWD](http://alistapart.com/article/responsive-web-design) and [MF](http://www.lukew.com/ff/entry.asp?933)) and work in IE9+.
