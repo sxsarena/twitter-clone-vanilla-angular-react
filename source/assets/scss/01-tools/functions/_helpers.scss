@@ -4,3 +4,12 @@
 @function x-strip-unit($num) {
   @return $num / ($num * 0 + 1);
 }
+
+
+// Grid
+///
+/// @param {number} $columns
+///
+@function x-gridsystem-width($columns) {
+  @return ($total-width / $total-columns) * $columns;
+}

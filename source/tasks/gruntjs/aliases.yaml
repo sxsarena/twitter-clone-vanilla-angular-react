@@ -5,7 +5,7 @@ default:
   - 'cssmin'
   - 'eslint'
   - 'htmlmin'
-  - 'imagemin'
+#  - 'imagemin'
   - 'connect'
   - 'watch'
 
@@ -16,7 +16,7 @@ dev:
   - 'cssmin'
   - 'eslint'
   - 'htmlmin'
-  - 'imagemin'
+#  - 'imagemin'
 
 server:
   - 'connect'

@@ -1,10 +1,39 @@
 // Default
 ///
-.container {
+%row {
+  @media(min-width:$screen-desktop) {
+    max-width: $screen-desktop;
+  }
+
+  @media(min-width:$screen-wide) {
+    max-width: $screen-wide;
+  }
+}
+
+.wrapper {
   overflow: hidden;
+  padding-top: 46px;
   width: 100%;
 }
 
+.container {
+  @include x-clearfix;
+  @extend %row;
+  margin: 0 auto;
+  overflow: inherit;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: relative;
+
+  @media(min-width:$screen-desktop) {
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.containerWithGutter { margin: 0 -$padding-width; }
+
 .content {
+  padding: 10px 0;
   width: 100%;
 }

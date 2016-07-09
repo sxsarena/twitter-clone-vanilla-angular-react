@@ -1,0 +1,78 @@
+.profileCard {
+  @include x-rem-fallback(font-size, 1.4);
+  color: $color-typography--dark;
+  padding: 30px 15px 0 15px;
+  position: relative;
+}
+
+.profileCard-avatar {
+  background: #fff;
+  border: 5px solid #fff;
+  border-radius: 12px;
+  box-shadow: 0 1px 1px rgba(136,153,166,0.15);
+  height: 200px;
+  overflow: hidden;
+  position: absolute;
+  top: -180px;
+  left: 15px;
+  width: 200px;
+}
+
+.profileCard-avatar-link,
+.profileCard-avatar-image { display: inline-block; }
+
+.profileCard-name {
+  @include x-rem-fallback(font-size, 2.2);
+  font-weight: 700;
+  margin-bottom: 0;
+
+  & > .profileCard-link { color: $color-typography--dark; }
+}
+
+.profileCard-name-verified { fill: $color-primary; }
+
+.profileCard-username,
+.profileCard-description,
+.profileCard-country,
+.profileCard-website,
+.profileCard-joinDate { margin-bottom: 10px; }
+
+.profileCard-username {
+  color: $color-typography;
+
+  & > .profileCard-link { color: $color-typography; }
+}
+
+.profileCard-website {
+  color: $color-typography-link;
+
+  & > .profileCard-link { color: $color-typography-link; }
+}
+
+.profileCard-NewTweet {}
+.profileCard-NewTweet-button {
+  @extend %button-default;
+  width: 100%;
+}
+
+.profileCard-NewTweet-button-icon {
+  fill: #fff;
+  float: left;
+  margin-right: 4px;
+}
+
+.profileCard-NewTweet-button-text {
+  font-weight: 700;
+  line-height: 24px;
+}
+
+.profileCard-link {
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+.profileCard-icon {
+  float: left;
+  fill: $color-typography--lighter;
+  margin-right: 5px;
+}

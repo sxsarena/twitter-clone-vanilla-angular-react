@@ -1,0 +1,7 @@
+.timeline {
+  @include x-column(6);
+  background: #fff;
+  border: 1px solid #e1e8ed;
+  border-radius: 5px;
+  padding: 15px;
+}

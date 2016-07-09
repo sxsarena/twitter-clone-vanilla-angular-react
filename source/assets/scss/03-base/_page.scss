@@ -12,4 +12,11 @@ html {
   -webkit-font-smoothing: antialiased;
 }
 
-body { font-family: $base-font-family; }
+body {
+  background: $base-background-color;
+  font-family: $base-font-family;
+}
+
+
+a,
+button { cursor: pointer; }
