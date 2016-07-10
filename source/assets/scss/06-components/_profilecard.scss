@@ -56,6 +56,15 @@
 .profileCard-website,
 .profileCard-joinDate { margin-bottom: 10px; }
 
+.profileCard-description {
+  & > a {
+    color: $color-typography-link;
+    text-decoration: none;
+
+    &:hover { text-decoration: underline; }
+  }
+}
+
 .profileCard-username {
   color: $color-typography;
 
