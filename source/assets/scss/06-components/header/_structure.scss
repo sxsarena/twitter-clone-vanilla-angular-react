@@ -18,6 +18,7 @@
     display: block;
     float: right;
     margin-top: 7px;
+    padding-right: 5px;
   }
 }
 
@@ -29,7 +30,12 @@
 }
 
 .globalProfile {
-  background: #fff;
-  border-bottom: 1px solid #e1e8ed;
-  width: 100%;
+  display: none;
+
+  @media(min-width:$screen-tablet-portrait) {
+    background: #fff;
+    border-bottom: 1px solid #e1e8ed;
+    display: block;
+    width: 100%;
+  }
 }

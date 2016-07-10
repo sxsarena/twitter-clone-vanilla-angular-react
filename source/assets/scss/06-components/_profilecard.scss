@@ -1,8 +1,12 @@
 .profileCard {
   @include x-rem-fallback(font-size, 1.4);
   color: $color-typography--dark;
-  padding: 30px 15px 0 15px;
+  padding-top: 10px;
   position: relative;
+
+  @media(min-width:$screen-tablet-portrait) {
+    padding: 30px 15px 0 15px;
+  }
 }
 
 .profileCard-avatar {
@@ -10,16 +14,31 @@
   border: 5px solid #fff;
   border-radius: 12px;
   box-shadow: 0 1px 1px rgba(136,153,166,0.15);
-  height: 200px;
+  height: 80px;
   overflow: hidden;
   position: absolute;
-  top: -180px;
+  top: -80px;
   left: 15px;
-  width: 200px;
+  width: 80px;
+
+  @media(min-width:$screen-tablet-portrait) {
+    top: -180px;
+    height: 200px;
+    width: 200px;
+  }
 }
 
 .profileCard-avatar-link,
-.profileCard-avatar-image { display: inline-block; }
+.profileCard-avatar-image {
+  display: inline-block;
+  height: 70px;
+  width: 70px;
+
+  @media(min-width:$screen-tablet-portrait) {
+    height: auto;
+    width: auto;
+  }
+}
 
 .profileCard-name {
   @include x-rem-fallback(font-size, 2.2);
@@ -49,7 +68,13 @@
   & > .profileCard-link { color: $color-typography-link; }
 }
 
-.profileCard-NewTweet {}
+.profileCard-NewTweet {
+  display: none;
+
+  @media(min-width:$screen-tablet-portrait) {
+    display: block;
+  }
+}
 .profileCard-NewTweet-button {
   @extend %button-default;
   width: 100%;

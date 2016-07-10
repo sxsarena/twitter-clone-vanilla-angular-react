@@ -1,12 +1,21 @@
 .sidebarProfile {
-  @include x-column(3);
+  @include x-column(12);
+
+  @media(min-width:$screen-tablet-portrait) {
+    width: x-gridsystem-width(3);
+  }
 }
 
 .sidebarProfile-box {
-  margin-top: 20px;
-  padding: 0 15px;
+  display: none;
 
-  &:first-child { margin-top: 0; }
+  @media(min-width:$screen-tablet-portrait) {
+    display: block;
+    margin-top: 20px;
+    padding: 0 15px;
+
+    &:first-child { margin-top: 0; }
+  }
 }
 
 .sidebarProfile-title {
@@ -48,5 +57,9 @@
 
 
 .sidebarWidgets {
-  @include x-column(3);
+  display: none;
+
+  @media(min-width:$screen-tablet-portrait) {
+    @include x-column(3);
+  }
 }

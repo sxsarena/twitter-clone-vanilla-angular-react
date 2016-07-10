@@ -1,4 +1,7 @@
-.mainMenu { float: left; }
+.mainMenu {
+  float: left;
+  padding-left: 5px;
+}
 
 .mainMenu-title { @include x-text-hide; }
 
