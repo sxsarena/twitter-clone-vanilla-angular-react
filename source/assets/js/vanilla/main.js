@@ -1,19 +1,22 @@
-import MakeRequest from './utils/request';
+import GetUser from './components/getUser';
+import GetTrends from './components/getTrends';
+import MakeRequestJson from './utils/request';
 
-MakeRequest({
+MakeRequestJson({
   url:'/1.1/users/show.json?screen_name=americanascom'
 }, (data) => {
-  console.warn(data);
+  new GetUser(data);
 });
 
-MakeRequest({
+MakeRequestJson({
   url:'/1.1/statuses/user_timeline.json?screen_name=americanascom'
 }, (data) => {
-  console.warn(data);
+
 });
 
-MakeRequest({
-  url:'/1.1/trends/place.json?id=1'
+MakeRequestJson({
+  url:'/1.1/trends/place.json?id=23424768'
 }, (data) => {
-  console.warn(data);
+  let $element = document.getElementById('js-trends');
+  GetTrends(data, $element);
 });

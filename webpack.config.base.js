@@ -22,7 +22,7 @@ module.exports = {
   },
   output: {
     path: PATHS.build,
-    filename: 'js/scripts.min.js',
+    filename: 'js/vanilla/scripts.min.js',
     publicPath: '/'
   },
   stats: {

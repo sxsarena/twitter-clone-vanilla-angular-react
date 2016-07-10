@@ -6,12 +6,13 @@
  * @param {function} errorHandler - for failed requests
  *
  */
-export default function makeRequest(options, successHandler, errorHandler) {
+export default function makeRequestJson(options, successHandler, errorHandler) {
   let xmlhttp  = new XMLHttpRequest();
   let headers  = options.headers;
   let dataSend = options.data || null;
+  let method   = options.method || 'GET';
 
-  xmlhttp.open('GET', options.url, true);
+  xmlhttp.open(method, options.url, true);
 
   xmlhttp.responseType = 'json';
 
