@@ -12,17 +12,19 @@ var env = {
 
 var PATHS = {
   app: path.resolve(__dirname, './source/assets/js'),
-  build: path.resolve(__dirname, './public')
+  build: path.resolve(__dirname, './public/js/')
 };
 
 module.exports = {
   env : NODE_ENV,
   entry: {
-    app: path.resolve(PATHS.app, 'vanilla/main.js')
+    vanilla: path.resolve(PATHS.app, 'vanilla/main.js'),
+    angular: path.resolve(PATHS.app, 'angular/app.js'),
+    react: path.resolve(PATHS.app, 'react/main.js')
   },
   output: {
     path: PATHS.build,
-    filename: 'js/vanilla/scripts.min.js',
+    filename: '[name]/[name].min.js',
     publicPath: '/'
   },
   stats: {
@@ -34,7 +36,7 @@ module.exports = {
     modulesDirectories: [
       'node_modules'
     ],
-    extensions: ['', '.json', '.webpack.js', '.js']
+    extensions: ['', '.json', '.webpack.js', '.js', '.jsx']
   },
   module: {
     loaders: [
@@ -43,7 +45,7 @@ module.exports = {
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
-          presets: ['es2015', 'stage-0']
+          presets: ['react', 'es2015', 'stage-0']
         },
         include: PATHS.app
       },

@@ -11,6 +11,8 @@ module.exports = function(grunt, options){
       },
       files: {
         '<%= projectDir %>/index.html': '<%= projectDev %>/html/index.html',
+        '<%= projectDir %>/angular/index.html': '<%= projectDev %>/html/angular/index.html',
+        '<%= projectDir %>/react/index.html': '<%= projectDev %>/html/react/index.html'
       }
     }
   }
