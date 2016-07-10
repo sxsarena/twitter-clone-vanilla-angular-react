@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:dev": "webpack-dev-server --config ./webpack.config.dev.js --progress --colors --inline",
-    "build": "webpack --config ./webpack.config.prod.js --progress --profile --colors",
+    "build:dev": "webpack-dev-server --config ./webpack.config.dev.js --progress --colors --inline --display-error-details",
+    "build": "webpack --config ./webpack.config.prod.js --progress --profile --colors --display-error-details",
     "doc": "esdoc -c .esdocrc",
     "lint": "eslint source/assets/js/**",
     "postinstall": "npm start && npm run doc",
-    "start": "grunt",
+    "start": "grunt && node server.js",
     "test": "karma start karma.conf.js"
   },
   "repository": {
@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/hemersonvianna/frontend-interview#readme",
   "devDependencies": {
+    "babel": "^6.5.2",
     "babel-core": "^6.10.4",
     "babel-eslint": "^6.1.1",
     "babel-loader": "^6.2.4",
@@ -37,10 +38,10 @@
     "esdoc": "^0.4.7",
     "eslint": "^3.0.1",
     "eslint-plugin-babel": "^3.3.0",
+    "express": "^4.14.0",
     "grunt": "^1.0.1",
     "grunt-autoprefixer": "^3.0.4",
     "grunt-combine-media-queries": "^1.0.20",
-    "grunt-contrib-connect": "^1.0.2",
     "grunt-contrib-cssmin": "^1.0.1",
     "grunt-contrib-htmlmin": "^1.4.0",
     "grunt-contrib-imagemin": "^1.0.1",
@@ -48,7 +49,10 @@
     "grunt-eslint": "^19.0.0",
     "grunt-karma": "^2.0.0",
     "grunt-sass": "^1.2.0",
+    "grunt-webpack": "^1.0.11",
+    "http-proxy-middleware": "^0.17.0",
     "imagemin-mozjpeg": "^6.0.0",
+    "json-loader": "^0.5.4",
     "karma": "^1.1.1",
     "karma-chai": "^0.1.0",
     "karma-mocha": "^1.1.1",
@@ -59,6 +63,7 @@
     "mocha": "^2.5.3",
     "node-sass": "^3.8.0",
     "phantomjs-prebuilt": "^2.1.7",
+    "request": "^2.65.0",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1"
   }

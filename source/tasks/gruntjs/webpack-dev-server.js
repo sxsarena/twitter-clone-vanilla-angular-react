@@ -5,7 +5,7 @@ module.exports = function(grunt, options){
   var projectNode = options.projectNode;
 
   var webpack = require("webpack");
-  var webpackConfig = require("../../../webpack.config.dev.js");
+  var webpackConfig = require("../../../webpack.config.prod.js");
 
   return {
     options: {

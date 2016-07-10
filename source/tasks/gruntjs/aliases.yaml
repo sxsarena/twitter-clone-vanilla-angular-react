@@ -6,8 +6,7 @@ default:
   - 'eslint'
   - 'htmlmin'
 #  - 'imagemin'
-  - 'connect'
-  - 'watch'
+  - 'webpack'
 
 dev:
   - 'sass'
@@ -17,10 +16,7 @@ dev:
   - 'eslint'
   - 'htmlmin'
 #  - 'imagemin'
-
-server:
-  - 'connect'
-  - 'watch'
+  - 'webpack'
 
 test:
   - 'karma'

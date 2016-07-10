@@ -9,11 +9,11 @@ config.plugins = config.plugins.concat([
   new webpack.optimize.OccurenceOrderPlugin()
 ]);
 
-config.devServer: {
-  contentBase: path.resolve(__dirname, PATHS.build),
-  port: 8000,
-  historyApiFallback: true
-},
+// config.devServer: {
+//   contentBase: path.resolve(__dirname, PATHS.build),
+//   port: 8000,
+//   historyApiFallback: true
+// }
 
 
 module.exports = config;
