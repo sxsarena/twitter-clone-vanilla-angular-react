@@ -9,17 +9,39 @@ import { textToLinks, identifyFirstHashTag } from '../utils/miscellaneous';
 export default class GetTimeline {
 
   constructor(data, $target) {
+    this.lastId = 0;
     this.getTweets(data, $target);
+
+    this.infinityScroll();
+  }
+
+  infinityScroll() {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset + document.documentElement.clientHeight === document.body.clientHeight) {
+        this.moreTweets();
+      }
+    });
+  }
+
+  moreTweets() {
+    let url = `/1.1/statuses/user_timeline.json?screen_name=americanascom&count=5&&max_id=${this.lastId}`;
+    makeRequestJson({
+      url: url
+    }, (data) => {
+      let $element = document.getElementById('js-tweets');
+      this.getTweets(data, $element);
+    });
   }
 
   getTweets(tweets, $target){
     let html = '';
 
     for (let i = 0, len = tweets.length; i < len; i++) {
+      this.lastId = tweets[i].id_str;
       html += this.createTweet(tweets[i]);
     }
 
-    $target.innerHTML = html;
+    $target.innerHTML += html;
   }
 
   getImageHashTag(text){
