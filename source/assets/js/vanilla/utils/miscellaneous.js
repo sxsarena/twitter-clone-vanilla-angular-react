@@ -42,3 +42,14 @@ export function stringShortener(text) {
   }
   return text;
 }
+
+
+export function dateMonthYear(date) {
+  date = new Date(Date.parse(date.replace(/( \+)/, ' UTC$1')));
+  let year = date.getUTCFullYear();
+  let month = date.getUTCMonth();
+  let monthArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
+  return `${monthArray[month]} ${year}`;
+}
+
