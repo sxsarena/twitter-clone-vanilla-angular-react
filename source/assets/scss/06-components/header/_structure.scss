@@ -14,7 +14,7 @@
 .globalNav-actions {
   display: none;
 
-  @media(min-width:$screen-tablet-portrait) {
+  @media(min-width:$screen-desktop) {
     display: block;
     float: right;
     margin-top: 7px;
@@ -32,7 +32,7 @@
 .globalProfile {
   display: none;
 
-  @media(min-width:$screen-tablet-portrait) {
+  @media(min-width:$screen-desktop) {
     background: #fff;
     border-bottom: 1px solid #e1e8ed;
     display: block;

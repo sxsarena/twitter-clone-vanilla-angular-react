@@ -14,7 +14,7 @@
   transition: all .15s ease-in-out;
   text-decoration: none;
 
-  @media(min-width:$screen-tablet-portrait) {
+  @media(min-width:$screen-desktop) {
     padding-left: 4px;
     padding-right: 14px;
   }
@@ -29,7 +29,7 @@
 .mainMenu-text {
   display:none;
 
-  @media(min-width:$screen-tablet-portrait) {
+  @media(min-width:$screen-desktop) {
     @include x-rem-fallback(font-size, 1.3);
     color: #66757f;
     display: inline-block;

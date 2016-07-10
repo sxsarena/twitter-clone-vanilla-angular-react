@@ -1,7 +1,7 @@
 .sidebarProfile {
   @include x-column(12);
 
-  @media(min-width:$screen-tablet-portrait) {
+  @media(min-width:$screen-desktop) {
     width: x-gridsystem-width(3);
   }
 }
@@ -9,7 +9,7 @@
 .sidebarProfile-box {
   display: none;
 
-  @media(min-width:$screen-tablet-portrait) {
+  @media(min-width:$screen-desktop) {
     display: block;
     margin-top: 20px;
     padding: 0 15px;
@@ -59,7 +59,7 @@
 .sidebarWidgets {
   display: none;
 
-  @media(min-width:$screen-tablet-portrait) {
+  @media(min-width:$screen-desktop) {
     @include x-column(3);
   }
 }
