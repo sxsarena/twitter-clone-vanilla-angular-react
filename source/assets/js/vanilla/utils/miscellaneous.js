@@ -1,4 +1,4 @@
-export default function thousandsFormatter(num) {
+export function thousandsFormatter(num) {
   let isNegative = false;
   let formattedNumber;
 
@@ -17,4 +17,20 @@ export default function thousandsFormatter(num) {
   }
   if(isNegative) { formattedNumber = '-' + formattedNumber }
   return formattedNumber;
+}
+
+export function textToLinks(text) {
+  let re = /(https?:\/\/(([-\w\.]+)+(:\d+)?(\/([\w/_\.]*(\?\S+)?)?)?))/g;
+  return text.replace(re, "<a href=\"$1\">$1</a>");
+}
+
+export function identifyFirstHashTag(text) {
+  let hashTag = text.match(/#\S+/g);
+
+
+  if(hashTag){
+    return hashTag[0].replace('#', '');
+  } else {
+    return false;
+  }
 }

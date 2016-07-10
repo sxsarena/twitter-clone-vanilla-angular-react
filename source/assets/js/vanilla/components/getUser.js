@@ -1,4 +1,4 @@
-import thousandsFormatter from '../utils/miscellaneous';
+import { thousandsFormatter } from '../utils/miscellaneous';
 
 /**
  *
