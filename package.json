@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:dev": "webpack-dev-server --config ./webpack.config.dev.js --progress --colors --inline",
+    "build": "webpack --config ./webpack.config.prod.js --progress --profile --colors",
     "doc": "esdoc -c .esdocrc",
     "lint": "eslint source/assets/js/**",
     "postinstall": "npm start && npm run doc",
@@ -52,6 +54,7 @@
     "karma-mocha": "^1.1.1",
     "karma-mocha-reporter": "^2.0.4",
     "karma-phantomjs-launcher": "^1.0.1",
+    "karma-webpack": "^1.7.0",
     "load-grunt-config": "^0.19.2",
     "mocha": "^2.5.3",
     "node-sass": "^3.8.0",
