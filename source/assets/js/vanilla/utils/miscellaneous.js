@@ -34,3 +34,11 @@ export function identifyFirstHashTag(text) {
     return false;
   }
 }
+
+export function stringShortener(text) {
+  var length = 5;
+  if (text.length > length) {
+    text = text.substring(0, length)+'...';
+  }
+  return text;
+}

@@ -1,6 +1,7 @@
 import GetTimeline from './components/getTimeline';
 import GetUser from './components/getUser';
 import GetTrends from './components/getTrends';
+import GetSuggestions from './components/getSuggestions';
 import makeRequestJson from './utils/request';
 
 makeRequestJson({
@@ -23,3 +24,11 @@ makeRequestJson({
   let $element = document.getElementById('js-trends');
   GetTrends(data, $element);
 });
+
+makeRequestJson({
+  url:'/1.1/users/suggestions/tv.json'
+}, (data) => {
+  let $element = document.getElementById('js-suggestions');
+  new GetSuggestions(data, $element);
+});
+
