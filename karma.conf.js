@@ -3,10 +3,10 @@ module.exports = function(config, options){
     basePath:  '',
     frameworks: ['mocha', 'chai'],
     files: [
-      './tests/*.js'
+      './tests/**/*.js'
     ],
     preprocessors: {
-      './tests/*.js': ['webpack']
+      './tests/**/*.js': ['webpack']
     },
     webpack: {
       resolve: {
