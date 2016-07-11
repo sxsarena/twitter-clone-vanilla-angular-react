@@ -41,14 +41,25 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.jsx$/,
-        exclude: /node_modules/,
+        test: /\.js$/,
+        exclude: /(node_modules|source\/assets\/js\/angular|source\/assets\/js\/react)/,
         loader: 'babel-loader',
         query: {
-          presets: ['react', 'es2015', 'stage-0']
+          presets: ['es2015', 'stage-0']
         },
         include: PATHS.app
       },
+      {
+        test: /\.jsx$/,
+        exclude: /(node_modules|source\/assets\/js\/angular|source\/assets\/js\/vanilla)/,
+        loader: 'babel-loader?presets[]=es2015,presets[]=stage-0,presets[]=react',
+      },
+      {
+        test: /\.js$/,
+        exclude: /(node_modules|source\/assets\/js\/react|source\/assets\/js\/vanilla)/,
+        loader: 'ng-annotate!babel-loader?presets[]=es2015,presets[]=stage-0'
+      },
+      { test: /\.html$/, loader: 'raw' },
       { test: /\.json$/, loaders: ['json-loader'] }
     ],
     noParse: /node_modules\/json-schema\/lib\/validate\.js/
