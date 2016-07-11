@@ -10,11 +10,18 @@ export default function getSuggestions(data, $target) {
   let suggestions    = data.users;
   let maxSuggestions = 3;
   let html           = '';
+  let len;
 
   let list = document.createElement('ul');
   list.className = 'widgetWhoToFollow-list';
 
-  for (let i = 0, len = suggestions.length; i < maxSuggestions; i++) {
+  if( suggestions.length >= maxSuggestions){
+    len = maxSuggestions;
+  } else {
+    len = suggestions.length;
+  }
+
+  for (let i = 0; i < len; i++) {
     html += `
     <li class="widgetWhoToFollow-item">
       <img class="widgetWhoToFollow-image" src="${suggestions[i].profile_image_url}" alt="" width="48" height="48">
@@ -36,7 +43,6 @@ export default function getSuggestions(data, $target) {
 
   $target.appendChild(list);
 }
-
 
 // <small class="widgetWhoToFollow-followed">
 //   Followed by <a class="widgetWhoToFollow-followed-link">Leonardo A. So...</a>

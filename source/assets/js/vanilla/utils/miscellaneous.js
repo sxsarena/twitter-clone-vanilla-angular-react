@@ -7,10 +7,10 @@ export function thousandsFormatter(num) {
   }
 
   if (num < 0) {
-    isNegative = true
+    isNegative = true;
   }
 
-  num = Math.abs(num)
+  num = Math.abs(num);
 
   if (num >= 1000000000) {
     formattedNumber = (num / 1000000000).toFixed(1).replace(/\.0$/, '') + 'G';
@@ -67,7 +67,6 @@ export function stringShortener(text, maxLength) {
   }
   return text;
 }
-
 
 export function dateMonthYear(date) {
   if(typeof date !== 'string' || typeof date === 'undefined' || !isDate(date) ){

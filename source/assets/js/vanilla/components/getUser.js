@@ -31,7 +31,7 @@ export default class GetUser {
       tweetsCount: thousandsFormatter(data.statuses_count),
       backgroundImage: `${data.profile_banner_url}/1500x500`,
       avatar: data.profile_image_url.replace('normal', '400x400')
-    }
+    };
 
     return infoUser;
   }

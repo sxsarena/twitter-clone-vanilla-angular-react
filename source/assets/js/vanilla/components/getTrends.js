@@ -9,11 +9,18 @@ export default function getTrends(data, $target) {
   let trends    = data[0].trends;
   let maxTrends = 10;
   let html      = '';
+  let len;
 
   let list = document.createElement('ul');
   list.className = 'widgetTrends-list';
 
-  for (let i = 0, len = trends.length; i < maxTrends; i++) {
+  if( trends.length >= maxTrends){
+    len = maxTrends;
+  } else {
+    len = trends.length;
+  }
+
+  for (let i = 0; i < len; i++) {
     html += `
     <li class="widgetTrends-item">
       <a class="widgetTrends-link" href="">
