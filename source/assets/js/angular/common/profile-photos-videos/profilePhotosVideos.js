@@ -1,16 +1,13 @@
 import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import profilePhotosVideosComponent from './profilePhotosVideos.component';
 
-export default angular
-  .module('challenge')
-  .component('profilePhotosVideos',{
-    templateUrl: 'profilePhotosVideos.html',
-    controller: profilePhotosVideosController,
-    bindings: {
-    }
-  });
+let profilePhotosVideosModule = angular.module('profilePhotosVideos', [
+  uiRouter
+])
 
-profilePhotosVideos.$inject = ['$scope'];
+.component('profilePhotosVideos', profilePhotosVideosComponent)
 
-function profilePhotosVideos($scope) {
-  let vm = this;
-}
+.name;
+
+export default profilePhotosVideosModule;

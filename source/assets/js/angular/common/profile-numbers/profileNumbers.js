@@ -1,16 +1,13 @@
 import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import profileNumbersComponent from './profileNumbers.component';
 
-export default angular
-  .module('challenge')
-  .component('profileNumbers',{
-    templateUrl: 'profileNumbers.html',
-    controller: profileNumbersController,
-    bindings: {
-    }
-  });
+let profileNumbersModule = angular.module('profileNumbers', [
+  uiRouter
+])
 
-profileNumbersController.$inject = ['$scope'];
+.component('profileNumbers', profileNumbersComponent)
 
-function profileNumbersController($scope) {
-  let vm = this;
-}
+.name;
+
+export default profileNumbersModule;

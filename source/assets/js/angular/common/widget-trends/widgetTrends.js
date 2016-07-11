@@ -1,16 +1,13 @@
 import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import widgetTrendsComponent from './widgetTrends.component';
 
-export default angular
-  .module('challenge')
-  .component('widgetTrends',{
-    templateUrl: 'widgetTrends.html',
-    controller: widgetTrendsController,
-    bindings: {
-    }
-  });
+let widgetTrendsModule = angular.module('widgetTrends', [
+  uiRouter
+])
 
-widgetTrendsController.$inject = ['$scope'];
+.component('widgetTrends', widgetTrendsComponent)
 
-function widgetTrendsController($scope) {
-  let vm = this;
-}
+.name;
+
+export default widgetTrendsModule;

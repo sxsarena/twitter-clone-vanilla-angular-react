@@ -1,16 +1,13 @@
 import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import widgetSuggestionsComponent from './widgetSuggestions.component';
 
-export default angular
-  .module('challenge')
-  .component('widgetSuggestions',{
-    templateUrl: 'widgetSuggestions.html',
-    controller: widgetSuggestionsController,
-    bindings: {
-    }
-  });
+let widgetSuggestionsModule = angular.module('widgetSuggestions', [
+  uiRouter
+])
 
-widgetSuggestionsController.$inject = ['$scope'];
+.component('widgetSuggestions', widgetSuggestionsComponent)
 
-function widgetSuggestionsController($scope) {
-  let vm = this;
-}
+.name;
+
+export default widgetSuggestionsModule;

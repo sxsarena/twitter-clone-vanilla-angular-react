@@ -1,16 +1,13 @@
 import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import profileCardComponent from './profileCard.component';
 
-export default angular
-  .module('challenge')
-  .component('profileCard',{
-    templateUrl: 'profileCard.html',
-    controller: profileCardController,
-    bindings: {
-    }
-  });
+let profileCardModule = angular.module('profileCard', [
+  uiRouter
+])
 
-profileCardController.$inject = ['$scope'];
+.component('profileCard', profileCardComponent)
 
-function profileCardController($scope) {
-  let vm = this;
-}
+.name;
+
+export default profileCardModule;

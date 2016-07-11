@@ -1,16 +1,13 @@
 import angular from 'angular';
+import uiRouter from 'angular-ui-router';
+import profileFollowersComponent from './profileFollowers.component';
 
-export default angular
-  .module('challenge')
-  .component('profileFollowers',{
-    templateUrl: 'profileFollowers.html',
-    controller: profileFollowersController,
-    bindings: {
-    }
-  });
+let profileFollowersModule = angular.module('profileFollowers', [
+  uiRouter
+])
 
-profileFollowersController.$inject = ['$scope'];
+.component('profileFollowers', profileFollowersComponent)
 
-function profileFollowersController($scope) {
-  let vm = this;
-}
+.name;
+
+export default profileFollowersModule;
