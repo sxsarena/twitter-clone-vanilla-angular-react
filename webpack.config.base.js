@@ -20,7 +20,7 @@ module.exports = {
   entry: {
     vanilla: path.resolve(PATHS.app, 'vanilla/main.js'),
     angular: path.resolve(PATHS.app, 'angular/app.js'),
-    react: path.resolve(PATHS.app, 'react/main.js')
+    react: path.resolve(PATHS.app, 'react/main.jsx')
   },
   output: {
     path: PATHS.build,
@@ -41,7 +41,7 @@ module.exports = {
   module: {
     loaders: [
       {
-        test: /\.js$/,
+        test: /\.jsx$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {

@@ -12,6 +12,12 @@ npm install
 npm start
 ```
 
+Access `http://localhost:3000/`
+
+- VanillaJS: `http://localhost:3000/`
+- ReactJS: `http://localhost:3000/react`
+- AngularJS: `http://localhost:3000/angular`
+
 ## Documentation
 
 ```bash
