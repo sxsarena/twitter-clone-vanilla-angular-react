@@ -1,5 +1,6 @@
 import makeRequestJson from '../utils/request';
 import { textToLinks, identifyFirstHashTag } from '../utils/miscellaneous';
+import { addClass, removeClass } from '../utils/manipulation';
 /**
  *
  *
@@ -10,8 +11,9 @@ export default class GetTimeline {
 
   constructor(data, $target) {
     this.lastId = 0;
-    this.getTweets(data, $target);
+    this.$target = $target;
 
+    this.getTweets(data, this.$target);
     this.infinityScroll();
   }
 
@@ -19,6 +21,7 @@ export default class GetTimeline {
     window.addEventListener('scroll', () => {
       if (window.pageYOffset + document.documentElement.clientHeight === document.body.clientHeight) {
         this.moreTweets();
+        this.$target.addClass('loading');
       }
     });
   }
@@ -28,8 +31,8 @@ export default class GetTimeline {
     makeRequestJson({
       url: url
     }, (data) => {
-      let $element = document.getElementById('js-tweets');
-      this.getTweets(data, $element);
+      this.$target.addClass('loading');
+      this.getTweets(data, this.$target);
     });
   }
 

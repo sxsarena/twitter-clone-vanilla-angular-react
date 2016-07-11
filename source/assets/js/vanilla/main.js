@@ -27,7 +27,7 @@ makeRequestJson({
 });
 
 makeRequestJson({
-  url:'/1.1/users/suggestions/tv.json'
+  url:'/1.1/users/suggestions/governo.json'
 }, (data) => {
   let $element = document.getElementById('js-suggestions');
   new GetSuggestions(data, $element);

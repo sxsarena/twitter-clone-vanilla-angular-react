@@ -1,15 +1,40 @@
 import React, { Component, PropTypes } from 'react';
+import MakeRequestJson from '../utils/request';
 
 export default class WidgetTrends extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {data: []};
+    this._generateItem = this._generateItem.bind(this);
   }
 
   componentDidMount() {
+    let me = this;
+
+    MakeRequestJson({ url: '/1.1/trends/place.json?id=23424768'}, (data) => {
+      me.setState({
+        data: data[0].trends
+      });
+    });
+  }
+
+  _generateItem(item, index) {
+    return (
+      <li className="widgetTrends-item" key={index}>
+        <a className="widgetTrends-link" href="">
+          <strong className="widgetTrends-name">{item.name}</strong>
+          {item.tweet_volume ? <span className="widgetTrends-stats">{item.tweet_volume} Tweets</span> : ''}
+        </a>
+      </li>
+    );
   }
 
   render() {
+    let items = this.state.data.map(this._generateItem).filter(function(item, index){
+      return index < 10;
+    });
     return (
       <section className="widgetTrends">
         <header className="widgetTrends-header">
@@ -18,18 +43,7 @@ export default class WidgetTrends extends Component {
         </header>
         <div className="widgetTrends-body">
           <ul className="widgetTrends-list">
-            <li className="widgetTrends-item">
-              <a className="widgetTrends-link" href="">
-                <strong className="widgetTrends-name">#EuQueroTanto</strong>
-                <span className="widgetTrends-stats">4,349 Tweets</span>
-              </a>
-            </li>
-            <li className="widgetTrends-item">
-              <a className="widgetTrends-link" href="">
-                <strong className="widgetTrends-name">#SabadoClubeSDV</strong>
-                <span className="widgetTrends-stats">10.2K Tweets</span>
-              </a>
-            </li>
+            {items}
           </ul>
         </div>
       </section>
