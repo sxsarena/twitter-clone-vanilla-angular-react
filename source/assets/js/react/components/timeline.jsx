@@ -58,7 +58,6 @@ export default class Timeline extends Component {
       url: url
     }, (data) => {
       me.setState({
-        loading: false,
         lastId: data[data.length-1].id,
         data: me.state.data.concat(data)
       });
@@ -66,6 +65,11 @@ export default class Timeline extends Component {
   }
 
   _generateItem(item, index) {
+    if(item.id === this.state.lastId){
+      this.setState({
+        loading: false
+      });
+    }
     return (
       <div className="tweet" key={item.id}>
         <div className="tweet-header">

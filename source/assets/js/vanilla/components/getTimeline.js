@@ -10,7 +10,7 @@ import { addClass, removeClass } from '../utils/manipulation';
 export default class GetTimeline {
 
   constructor(data, $target) {
-    this.lastId = 0;
+    this.lastId = data[data.length-1].id;
     this.$target = $target;
 
     this.getTweets(data, this.$target);
@@ -20,17 +20,20 @@ export default class GetTimeline {
   infinityScroll() {
     window.addEventListener('scroll', () => {
       if (window.pageYOffset + document.documentElement.clientHeight === document.body.clientHeight) {
-        this.moreTweets();
         addClass(this.$target, 'loading');
+        setTimeout(() => {
+          this.moreTweets();
+        }, 100);
       }
     });
   }
 
   moreTweets() {
-    let url = `/1.1/statuses/user_timeline.json?screen_name=americanascom&count=5&&max_id=${this.lastId}`;
+    let url = `/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5&max_id=${this.lastId}`;
     makeRequestJson({
       url: url
     }, (data) => {
+      this.lastId = data[data.length-1].id;
       removeClass(this.$target, 'loading');
       this.getTweets(data, this.$target);
     });
@@ -40,7 +43,6 @@ export default class GetTimeline {
     let html = '';
 
     for (let i = 0, len = tweets.length; i < len; i++) {
-      this.lastId = tweets[i].id_str;
       html += this.createTweet(tweets[i]);
     }
 
