@@ -5,13 +5,20 @@
 ```bash
 npm install
 ```
+Access `http://localhost:3000/`
+
+- VanillaJS: `http://localhost:3000/`
+- ReactJS: `http://localhost:3000/react`
+- AngularJS: `http://localhost:3000/angular`
+
+- SCSS Documentation: `http://localhost:3000/doc-scss` 
+- JS Documentation: `http://localhost:3000/doc-js`
 
 ## Running
 
 ```bash
 npm start
 ```
-
 Access `http://localhost:3000/`
 
 - VanillaJS: `http://localhost:3000/`
@@ -23,6 +30,8 @@ Access `http://localhost:3000/`
 ```bash
 npm run doc
 ```
+Access `http://localhost:3000/doc-js` - JS documentation
+Access `http://localhost:3000/doc-scss` - SCSS documentation
 
 ## Tests
 
