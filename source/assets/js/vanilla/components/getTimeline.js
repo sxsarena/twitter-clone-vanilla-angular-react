@@ -77,9 +77,9 @@ export default class GetTimeline {
     let tag = identifyFirstHashTag(text);
 
     makeRequestJson({
-      url:`https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=ab5c79cebe606021a19c1d1d440342c1&tags=${tag}&per_page=1&format=json&nojsoncallback=1`
+      url:`/services/rest/?method=flickr.photos.search&api_key=ab5c79cebe606021a19c1d1d440342c1&tags=${tag}&per_page=1&format=json&nojsoncallback=1`
     }, (data) => {
-      let str = `https://www.flickr.com/photos/${data.photos.photo[0].owner}/${data.photos.photo[0].id}`;
+      let str = `/photos/${data.photos.photo[0].owner}/${data.photos.photo[0].id}`;
       return str;
     }, () => {
       let response = false;

@@ -27,7 +27,7 @@ export default class ProfileCard extends Component {
 
   _setAvatar(image){
     let newImage = image;
-    return newImage.replace('normal', '400x400');
+    return newImage.replace('normal', '200x200');
   }
 
   render() {

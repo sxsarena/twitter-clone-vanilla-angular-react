@@ -30,7 +30,7 @@ export default class GetUser {
       likesCount: thousandsFormatter(data.favourites_count),
       tweetsCount: thousandsFormatter(data.statuses_count),
       backgroundImage: `${data.profile_banner_url}/1500x500`,
-      avatar: data.profile_image_url.replace('normal', '400x400')
+      avatar: data.profile_image_url.replace('normal', '200x200')
     };
 
     return infoUser;
