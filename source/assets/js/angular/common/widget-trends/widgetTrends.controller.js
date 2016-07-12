@@ -2,7 +2,7 @@ class widgetTrendsController {
   constructor($http) {
     this.name = 'widgetTrends';
 
-    var REQ = {
+    let REQ = {
       url: '/1.1/trends/place.json?id=23424768',
       method: 'GET'
     };
