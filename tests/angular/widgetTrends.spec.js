@@ -3,20 +3,22 @@ import WidgetTrendsController from '../../source/assets/js/angular/common/widget
 import WidgetTrendsComponent from '../../source/assets/js/angular/common/widget-trends/widgetTrends.component';
 import WidgetTrendsTemplate from '../../source/assets/js/angular/common/widget-trends/widgetTrends.html';
 
+import twitterAPI from '../../source/assets/js/angular/services/twitter/twitter.service';
+
 describe('BDD - Angular - Common - WidgetTrends', () => {
-  let $rootScope, makeController, twitterAPI;
+  let $rootScope, makeController;
 
   beforeEach(window.module(WidgetTrendsModule));
   beforeEach(inject((_$rootScope_, _twitterAPI_) => {
     $rootScope = _$rootScope_;
     twitterAPI = _twitterAPI_;
+
     makeController = () => {
-      return new WidgetTrendsController();
+      return new WidgetTrendsController(twitterAPI);
     };
   }));
 
   describe('Module', () => {
-
   });
 
   describe('Controller', () => {
