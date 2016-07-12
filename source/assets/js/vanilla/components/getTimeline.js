@@ -1,14 +1,19 @@
 import makeRequestJson from '../utils/request';
 import { textToLinks, identifyFirstHashTag } from '../utils/miscellaneous';
 import { addClass, removeClass } from '../utils/manipulation';
+
 /**
- *
- *
- *
- *
+ * GetTimeline class.
  */
 export default class GetTimeline {
 
+  /**
+   * create instance.
+   * @param {Object} data - timeline data
+   * @param {DOM} $target - element that will receive data
+   * @property {number} lastId
+   * @property {DOM} $target
+   */
   constructor(data, $target) {
     this.lastId = data[data.length-1].id;
 
@@ -18,6 +23,9 @@ export default class GetTimeline {
     this.infinityScroll();
   }
 
+  /**
+   *
+   */
   infinityScroll() {
     window.addEventListener('scroll', () => {
       if (window.pageYOffset + document.documentElement.clientHeight === document.body.clientHeight) {
@@ -29,6 +37,10 @@ export default class GetTimeline {
     });
   }
 
+  /**
+   *
+   * @property {string} url
+   */
   moreTweets() {
     let url = `/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5&max_id=${this.lastId}`;
     makeRequestJson({
@@ -40,6 +52,12 @@ export default class GetTimeline {
     });
   }
 
+  /**
+   *
+   * @param {Array} tweets
+   * @param {DOM} $target
+   * @property {string} html
+   */
   getTweets(tweets, $target){
     let html = '';
 
@@ -50,6 +68,11 @@ export default class GetTimeline {
     $target.innerHTML += html;
   }
 
+  /**
+   *
+   * @param {string} text
+   * @property {string} tag
+   */
   getImageHashTag(text){
     let tag = identifyFirstHashTag(text);
 
@@ -64,11 +87,21 @@ export default class GetTimeline {
     });
   }
 
+  /**
+   *
+   * @param {Object} tweet
+   */
   createTweet(tweet){
     tweet.flick = this.getImageHashTag(tweet.text);
     return this.getTweet(tweet);
   }
 
+  /**
+   *
+   * @param {Object} tweet
+   * @property {string} html
+   * @returns {string} html
+   */
   getTweet(tweet){
     let html = `
     <div class="tweet">

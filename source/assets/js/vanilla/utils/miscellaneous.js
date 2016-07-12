@@ -1,3 +1,9 @@
+/**
+ *
+ *
+ * @param {number} num
+ *
+ */
 export function thousandsFormatter(num) {
   let isNegative = false;
   let formattedNumber;
@@ -27,6 +33,12 @@ export function thousandsFormatter(num) {
   return formattedNumber;
 }
 
+/**
+ *
+ *
+ * @param {string} text
+ *
+ */
 export function textToLinks(text) {
   if(typeof text !== 'string' || typeof text === 'undefined' ){
     return false;
@@ -37,6 +49,12 @@ export function textToLinks(text) {
   return text.replace(re, "<a href=\"$1\">$1</a>");
 }
 
+/**
+ *
+ *
+ * @param {string} text
+ *
+ */
 export function identifyFirstHashTag(text) {
   if(typeof text !== 'string' || typeof text === 'undefined' ){
     return false;
@@ -51,6 +69,13 @@ export function identifyFirstHashTag(text) {
   }
 }
 
+/**
+ *
+ *
+ * @param {string} text
+ * @param {number} maxLength
+ *
+ */
 export function stringShortener(text, maxLength) {
   if(typeof text !== 'string' || typeof text === 'undefined' ){
     return false;
@@ -68,6 +93,12 @@ export function stringShortener(text, maxLength) {
   return text;
 }
 
+/**
+ *
+ *
+ * @param {string} Date
+ *
+ */
 export function dateMonthYear(date) {
   if(typeof date !== 'string' || typeof date === 'undefined' || !isDate(date) ){
     return false;
@@ -82,6 +113,12 @@ export function dateMonthYear(date) {
   return `${monthArray[month]} ${year}`;
 }
 
+/**
+ *
+ *
+ * @param {string} Date
+ *
+ */
 export function isDate(date) {
   if(typeof date !== 'string' || typeof date === 'undefined'){
     return false;

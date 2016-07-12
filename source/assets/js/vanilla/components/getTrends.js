@@ -1,8 +1,11 @@
 /**
  *
- *
- *
- *
+ * @param {Object} data
+ * @param {DOM} $target
+ * @property {Object} trends
+ * @property {number} maxTrends
+ * @property {string} html
+ * @property {number} len
  */
 export default function getTrends(data, $target) {
 

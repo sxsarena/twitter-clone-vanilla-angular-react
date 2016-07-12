@@ -1,9 +1,13 @@
 import { stringShortener } from '../utils/miscellaneous';
+
 /**
  *
- *
- *
- *
+ * @param {Object} data
+ * @param {DOM} $target
+ * @property {Object} suggestions
+ * @property {number} maxSuggestions
+ * @property {string} html
+ * @property {number} len
  */
 export default function getSuggestions(data, $target) {
 
