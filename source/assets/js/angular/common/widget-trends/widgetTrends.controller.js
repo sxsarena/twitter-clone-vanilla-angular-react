@@ -3,7 +3,9 @@ class widgetTrendsController {
     this.name = 'widgetTrends';
 
     twitterAPI.getTrends()
-      .success( data => this.trends = data[0].trends );
+      .success( (data) => {
+        this.trends = data[0].trends;
+      });
   }
 }
 

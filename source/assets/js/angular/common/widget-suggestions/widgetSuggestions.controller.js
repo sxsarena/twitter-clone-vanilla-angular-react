@@ -3,7 +3,9 @@ class widgetSuggestionsController {
     this.name = 'widgetSuggestions';
 
     twitterAPI.getSuggestions()
-      .success( data => this.suggestions = data.users );
+      .success( (data) => {
+        this.suggestions = data.users;
+      });
   }
 }
 
