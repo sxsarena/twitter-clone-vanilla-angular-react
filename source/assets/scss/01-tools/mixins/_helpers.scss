@@ -27,6 +27,8 @@
 }
 
 // REM Fallback
+/// @param {string} $property
+/// @param {} $values
 ///
 @mixin x-rem-fallback($property, $values...) {
   // html {font-size: 62.5%;}

@@ -1,7 +1,7 @@
 {
   "name": "frontend-interview",
   "version": "0.0.1",
-  "description": "",
+  "description": "Challenge B2W",
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack-dev-server --config ./webpack.config.dev.js --progress --colors --inline --display-error-details",

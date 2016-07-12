@@ -7,7 +7,7 @@
 ////
 /// @author Hemerson Vianna
 /// @group objects
-////
+///
 %button {
   border: none;
   border-radius: 4px;
@@ -26,11 +26,12 @@
             user-select: none;
 }
 
-/// Button size
+/// Button Medium
 %button-medium { padding: 9px 15px; }
+/// Button Small
 %button-small { padding: 6px 8px; }
 
-/// Button type
+/// Button default
 %button-default {
   @extend %button;
   background: $color-typography-link;
@@ -43,6 +44,7 @@
   }
 }
 
+/// Button light
 %button-light {
   @extend %button;
   background-color: #f5f8fa;

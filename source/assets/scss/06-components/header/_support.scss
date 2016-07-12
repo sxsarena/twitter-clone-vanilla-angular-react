@@ -7,7 +7,9 @@
 ////
 /// @author Hemerson Vianna
 /// @group components
-////
+///
+
+/// Global support
 .globalSupport-list { @include x-clearfix; }
 .globalSupport-item {
   float: left;

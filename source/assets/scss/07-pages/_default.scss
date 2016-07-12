@@ -7,7 +7,9 @@
 ////
 /// @author Hemerson Vianna
 /// @group pages
-////
+///
+
+/// Row
 %row {
   @media(min-width:$screen-desktop) {
     max-width: $screen-desktop;
@@ -18,12 +20,14 @@
   }
 }
 
+/// Wrapper
 .wrapper {
   overflow: hidden;
   padding-top: 46px;
   width: 100%;
 }
 
+/// Container
 .container {
   @include x-clearfix;
   @extend %row;
@@ -41,6 +45,7 @@
 
 .containerWithGutter { margin: 0 -$padding-width; }
 
+/// Content
 .content {
   padding: 10px 0;
   width: 100%;

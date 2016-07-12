@@ -10,6 +10,7 @@
 ////
 
 // Strip unit
+/// @param {number} $num
 ///
 @function x-strip-unit($num) {
   @return $num / ($num * 0 + 1);

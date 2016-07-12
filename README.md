@@ -30,8 +30,8 @@ Access `http://localhost:3000/`
 ```bash
 npm run doc
 ```
-Access `http://localhost:3000/doc-js` - JS documentation
-Access `http://localhost:3000/doc-scss` - SCSS documentation
+- JS documentation: `http://localhost:3000/doc-js`
+- SCSS documentation: `http://localhost:3000/doc-scss`
 
 ## Tests
 
