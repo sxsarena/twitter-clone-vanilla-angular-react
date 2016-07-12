@@ -7,7 +7,6 @@ let timelineModule = angular.module('timeline', [
 ])
 
 .component('timeline', timelineComponent)
-
 .name;
 
 export default timelineModule;

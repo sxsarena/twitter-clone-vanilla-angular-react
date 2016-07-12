@@ -11,7 +11,11 @@
   border: 1px solid #e1e8ed;
   border-radius: 5px 5px 0 0;
 }
-.timeline-body {}
+
+.timeline-body {
+  margin-bottom: 40px;
+  padding-bottom: 80px;
+}
 
 
 .navTimeline {}
@@ -159,3 +163,4 @@
 }
 
 .tweet-action-icon { fill: #aab8c2; }
+

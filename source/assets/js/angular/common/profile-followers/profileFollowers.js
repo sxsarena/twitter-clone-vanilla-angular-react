@@ -7,7 +7,6 @@ let profileFollowersModule = angular.module('profileFollowers', [
 ])
 
 .component('profileFollowers', profileFollowersComponent)
-
 .name;
 
 export default profileFollowersModule;

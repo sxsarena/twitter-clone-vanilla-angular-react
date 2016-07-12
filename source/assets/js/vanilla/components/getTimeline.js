@@ -21,7 +21,7 @@ export default class GetTimeline {
     window.addEventListener('scroll', () => {
       if (window.pageYOffset + document.documentElement.clientHeight === document.body.clientHeight) {
         this.moreTweets();
-        this.$target.addClass('loading');
+        addClass(this.$target, 'loading');
       }
     });
   }
@@ -31,7 +31,7 @@ export default class GetTimeline {
     makeRequestJson({
       url: url
     }, (data) => {
-      this.$target.addClass('loading');
+      removeClass(this.$target, 'loading');
       this.getTweets(data, this.$target);
     });
   }

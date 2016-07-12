@@ -7,7 +7,6 @@ let widgetSuggestionsModule = angular.module('widgetSuggestions', [
 ])
 
 .component('widgetSuggestions', widgetSuggestionsComponent)
-
 .name;
 
 export default widgetSuggestionsModule;

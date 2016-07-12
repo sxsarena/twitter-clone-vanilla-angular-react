@@ -7,7 +7,6 @@ let mainMenuModule = angular.module('mainMenu', [
 ])
 
 .component('mainMenu', mainMenuComponent)
-
 .name;
 
 export default mainMenuModule;

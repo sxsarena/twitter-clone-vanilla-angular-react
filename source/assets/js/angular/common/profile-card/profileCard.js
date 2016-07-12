@@ -7,7 +7,6 @@ let profileCardModule = angular.module('profileCard', [
 ])
 
 .component('profileCard', profileCardComponent)
-
 .name;
 
 export default profileCardModule;

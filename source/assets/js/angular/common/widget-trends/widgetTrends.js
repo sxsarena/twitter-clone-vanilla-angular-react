@@ -7,7 +7,6 @@ let widgetTrendsModule = angular.module('widgetTrends', [
 ])
 
 .component('widgetTrends', widgetTrendsComponent)
-
 .name;
 
 export default widgetTrendsModule;

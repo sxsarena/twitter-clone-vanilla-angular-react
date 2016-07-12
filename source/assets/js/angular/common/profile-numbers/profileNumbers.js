@@ -7,7 +7,6 @@ let profileNumbersModule = angular.module('profileNumbers', [
 ])
 
 .component('profileNumbers', profileNumbersComponent)
-
 .name;
 
 export default profileNumbersModule;

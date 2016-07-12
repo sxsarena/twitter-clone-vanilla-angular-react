@@ -7,7 +7,6 @@ let profilePhotosVideosModule = angular.module('profilePhotosVideos', [
 ])
 
 .component('profilePhotosVideos', profilePhotosVideosComponent)
-
 .name;
 
 export default profilePhotosVideosModule;

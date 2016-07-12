@@ -18,7 +18,6 @@ let commonModule = angular.module('app.common', [
   widgetSuggestions,
   widgetTrends
 ])
-
 .name;
 
 export default commonModule;
