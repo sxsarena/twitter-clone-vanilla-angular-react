@@ -5,16 +5,10 @@
   </header><!-- /header -->
   <div class="widgetTrends-body">
     <ul class="widgetTrends-list">
-      <li class="widgetTrends-item">
+      <li class="widgetTrends-item" ng-repeat="trend in $ctrl.trends | limitTo: 10">
         <a class="widgetTrends-link" href="">
-          <strong class="widgetTrends-name">#EuQueroTanto</strong>
-          <span class="widgetTrends-stats">4,349 Tweets</span>
-        </a>
-      </li>
-      <li class="widgetTrends-item">
-        <a class="widgetTrends-link" href="">
-          <strong class="widgetTrends-name">#SabadoClubeSDV</strong>
-          <span class="widgetTrends-stats">10.2K Tweets</span>
+          <strong class="widgetTrends-name">{{trend.name}}</strong>
+          <span class="widgetTrends-stats" ng-if="trend.tweet_volume">{{trend.tweet_volume}} Tweets</span>
         </a>
       </li>
     </ul>

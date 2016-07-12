@@ -4,6 +4,4 @@ class mainMenuController {
   }
 }
 
-mainMenuController.$inject = [''];
-
 export default mainMenuController;

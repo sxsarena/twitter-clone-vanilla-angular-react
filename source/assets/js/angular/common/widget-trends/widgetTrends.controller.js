@@ -1,5 +1,5 @@
 class widgetTrendsController {
-  constructor($scope, $http) {
+  constructor($http) {
     this.name = 'widgetTrends';
 
     var REQ = {
@@ -8,16 +8,12 @@ class widgetTrendsController {
     };
 
     $http(REQ)
-      .success(function(data){
-        console.log('Data: ', data);
-        $scope.User = data;
-      })
-      .error(function(err){
-        console.log('Erro: ', err);
+      .success((data) => {
+        this.trends = data[0].trends;
       });
   }
 }
 
-widgetTrendsController.$inject = ['$scope', 'http'];
+widgetTrendsController.$inject = ['$http'];
 
 export default widgetTrendsController;
