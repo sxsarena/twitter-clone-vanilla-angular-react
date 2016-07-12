@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react';
+import classNames from 'classnames';
 import MakeRequestJson from '../utils/request';
 import { textToLinks } from '../utils/miscellaneous';
 
@@ -8,7 +9,8 @@ export default class Timeline extends Component {
     super(props);
 
     this.state = {
-      data: []
+      data: [],
+      loading: false
     };
 
     this.lastId = 0;
@@ -21,9 +23,10 @@ export default class Timeline extends Component {
   componentDidMount() {
     let me = this;
 
-    MakeRequestJson({url: '/1.1/statuses/user_timeline.json?screen_name=americanascom&count=5'}, (data) => {
+    MakeRequestJson({url: '/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5'}, (data) => {
       me.setState({
-        data: data
+        data: data,
+        lastId: data[data.length-1].id
       });
     });
 
@@ -37,31 +40,34 @@ export default class Timeline extends Component {
   _infinityScroll() {
     window.addEventListener('scroll', () => {
       if (window.pageYOffset + document.documentElement.clientHeight === document.body.clientHeight) {
-        this._moreTweets();
+        this.setState({
+          loading: true
+        });
+        setTimeout(() => {
+          this._moreTweets();
+        }, 100);
       }
     });
   }
 
   _moreTweets() {
     let me = this;
-    let url = `/1.1/statuses/user_timeline.json?screen_name=americanascom&count=5&&max_id=${this.lastId}`;
+    let url = "/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5&max_id="+ this.state.lastId;
 
     MakeRequestJson({
       url: url
     }, (data) => {
-      data.forEach((obj) => {
-        me.state.data.push(obj);
+      me.setState({
+        loading: false,
+        lastId: data[data.length-1].id,
+        data: me.state.data.concat(data)
       });
-      //me.forceUpdate();
     });
   }
 
   _generateItem(item, index) {
-    this.lastId = this.lastId+1;
-
-    console.warn(this.lastId);
     return (
-      <div className="tweet" key={this.lastId}>
+      <div className="tweet" key={item.id}>
         <div className="tweet-header">
           <a className="tweet-link" href="">
             <img className="tweet-avatar" src={item.user.profile_image_url} alt="" width="48" height="48" />
@@ -72,9 +78,7 @@ export default class Timeline extends Component {
             <svg className="tweet-translateButton-svg" xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 100 100"><path fill-rule="evenodd" clip-rule="evenodd" d="M0 49.764C-.04 22.064 22.544.044 50.242 0 77.235-.044 100.01 22.09 100 50.06 99.99 76.84 78.79 99.91 49.916 100 22.31 100.085 0 77.522 0 49.764zm18.13-16.11c2.124-.233 3.874-.477 5.633-.592.854-.056 1.355-.324 1.73-1.13.992-2.132 2.054-4.233 3.158-6.31.273-.51.74-1.027 1.245-1.29 6.72-3.502 13.467-6.953 20.194-10.44.28-.147.65-.575.61-.81-.36-2.137-.8-4.258-1.213-6.358-18.765-.505-36.545 14.35-40.32 29.9l16.865 7.56c-.25.79-.364 1.36-.604 1.874-1.263 2.703-.837 5.258.047 8.047.854 2.698 2.208 4.726 4.492 6.262.77.52 1.5 1.115 2.18 1.75.324.305.635.76.7 1.187.747 4.958 1.573 9.908 2.116 14.89.378 3.463 1.32 6.558 3.94 9.025.12-.2.26-.416.376-.644 2.31-4.497 4.645-8.98 6.916-13.498 1.615-3.213 3.153-6.428 6.277-8.57 1.53-1.047 2.797-2.47 4.27-3.613.714-.555.85-1.096.695-1.926-.404-2.18-.707-4.38-1.103-6.56-.072-.395-.32-.83-.617-1.1-3.368-3.033-6.748-6.055-10.167-9.03-.37-.323-1.03-.51-1.527-.463-3.18.304-6.352.72-9.532 1.032-.978.095-2.222.36-2.93-.097-4.437-2.86-8.756-5.9-13.43-9.1zm45.25 2.686c.583.505 1.107.975 1.648 1.426 2.258 1.886 4.03 4.334 7.007 5.374 2.798.977 5.454 2.353 8.21 3.46.97.39 1.603.973 2.123 1.853 2.12 3.593 4.355 7.12 6.417 10.747.64 1.127 1.532 1.377 2.512 1.134.45-.11.885-.954 1.025-1.538 1.162-4.845 1.333-9.74.656-14.677-1.44-10.495-6.168-19.25-13.92-26.41-.436-.4-1.016-.84-1.567-.896-5.157-.535-10.324-.998-15.49-1.447-.264-.023-.678.193-.813.422-1.503 2.533-1.337 3.205.68 5.285 2.426 2.502 4.74 5.113 7.074 7.645l-5.56 7.62z"/></svg>
           </button>
         </div>
-        <div className="tweet-content">
-          {textToLinks(item.text)}
-        </div>
+        <div className="tweet-content" dangerouslySetInnerHTML={{__html: textToLinks(item.text)}}></div>
         <div className="tweet-footer">
           <nav className="tweet-action">
             <ul className="tweet-action-list">
@@ -107,6 +111,10 @@ export default class Timeline extends Component {
 
   render() {
     let items = this.state.data.map(this._generateItem);
+    let classLoading = classNames({
+      'timeline-body': true,
+      'loading': this.state.loading
+    });
     return (
       <section className="timeline">
         <header className="timeline-header">
@@ -118,7 +126,7 @@ export default class Timeline extends Component {
             </ul>
           </nav>
         </header>
-        <div className="timeline-body">
+        <div className={classLoading}>
           {items}
         </div>
       </section>
