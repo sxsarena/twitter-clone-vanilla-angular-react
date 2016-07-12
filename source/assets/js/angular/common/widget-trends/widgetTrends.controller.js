@@ -1,19 +1,12 @@
 class widgetTrendsController {
-  constructor($http) {
+  constructor(twitterAPI) {
     this.name = 'widgetTrends';
 
-    let REQ = {
-      url: '/1.1/trends/place.json?id=23424768',
-      method: 'GET'
-    };
-
-    $http(REQ)
-      .success((data) => {
-        this.trends = data[0].trends;
-      });
+    twitterAPI.getTrends()
+      .success( data => this.trends = data[0].trends );
   }
 }
 
-widgetTrendsController.$inject = ['$http'];
+widgetTrendsController.$inject = ['twitterAPI'];
 
 export default widgetTrendsController;
