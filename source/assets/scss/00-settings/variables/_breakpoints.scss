@@ -1,5 +1,13 @@
-// Breakpoints
-///
+// ----------------------------------------------------------------------
+
+  // Breakpoints
+
+// ----------------------------------------------------------------------
+
+////
+/// @author Hemerson Vianna
+/// @group settings
+////
 $screen-base: 1200px !default;
 //Smartphones (portrait)
 $screen-phone-portrait: 320px !default;
@@ -13,6 +21,7 @@ $screen-tablet-portrait: 768px !default;
 $screen-desktop: 992px !default;
 //Wide
 $screen-wide: 1200px !default;
+// Max
 $screen-phone-portrait-max: ( $screen-phone-landscape - 1 );
 $screen-phone-landscape-max: ( $screen-tablet-small - 1 );
 $screen-tablet-small-max: ( $screen-tablet-portrait - 1 );

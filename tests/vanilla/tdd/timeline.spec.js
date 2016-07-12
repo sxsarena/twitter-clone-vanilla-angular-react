@@ -5,7 +5,7 @@ describe('TDD - Timeline', () => {
     before( () => {
       global.initialAmount = 5;
       global.API = {};
-      global.API.valid = ['tweet', 'tweet', 'tweet', 'reply', 'reply','tweet', 'tweet', 'tweet', 'reply', 'reply'];
+      global.API.valid = ['tweet', 'tweet', 'tweet', 'reply', 'reply', 'tweet', 'tweet', 'tweet', 'reply', 'reply'];
       global.API.invalid = ['tweet', 'tweet', 'tweet', 'reply', 'reply'];
       global.request = (API) => {
         let tweets = [];

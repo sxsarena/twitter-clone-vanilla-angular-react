@@ -1,3 +1,13 @@
+// ----------------------------------------------------------------------
+
+  // ProfileCard
+
+// ----------------------------------------------------------------------
+
+////
+/// @author Hemerson Vianna
+/// @group components
+////
 .profileCard {
   @include x-rem-fallback(font-size, 1.4);
   color: $color-typography--dark;

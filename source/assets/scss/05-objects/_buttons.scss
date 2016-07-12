@@ -1,3 +1,13 @@
+// ----------------------------------------------------------------------
+
+  // Buttons
+
+// ----------------------------------------------------------------------
+
+////
+/// @author Hemerson Vianna
+/// @group objects
+////
 %button {
   border: none;
   border-radius: 4px;
@@ -16,9 +26,11 @@
             user-select: none;
 }
 
+/// Button size
 %button-medium { padding: 9px 15px; }
 %button-small { padding: 6px 8px; }
 
+/// Button type
 %button-default {
   @extend %button;
   background: $color-typography-link;
