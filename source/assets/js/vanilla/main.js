@@ -7,7 +7,6 @@ import makeRequestJson from './utils/request';
 makeRequestJson({
   url:'/1.1/users/show.json?screen_name=americanascom'
 }, (data) => {
-  console.warn(data);
   new GetUser(data);
 });
 

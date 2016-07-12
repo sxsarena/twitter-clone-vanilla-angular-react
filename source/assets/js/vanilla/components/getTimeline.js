@@ -11,6 +11,7 @@ export default class GetTimeline {
 
   constructor(data, $target) {
     this.lastId = data[data.length-1].id;
+
     this.$target = $target;
 
     this.getTweets(data, this.$target);
