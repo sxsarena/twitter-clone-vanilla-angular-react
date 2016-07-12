@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import MakeRequestJson from '../utils/request';
+import { textToLinks } from '../utils/miscellaneous';
 
 export default class Timeline extends Component {
 
@@ -72,7 +73,7 @@ export default class Timeline extends Component {
           </button>
         </div>
         <div className="tweet-content">
-          {item.text}
+          {textToLinks(item.text)}
         </div>
         <div className="tweet-footer">
           <nav className="tweet-action">
