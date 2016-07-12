@@ -3,7 +3,7 @@ import WidgetTrendsController from '../../source/assets/js/angular/common/widget
 import WidgetTrendsComponent from '../../source/assets/js/angular/common/widget-trends/widgetTrends.component';
 import WidgetTrendsTemplate from '../../source/assets/js/angular/common/widget-trends/widgetTrends.html';
 
-import twitterAPI from '../../source/assets/js/angular/services/twitter/twitter.service';
+import twitterAPI from '../../source/assets/js/angular/services/twitter/twitter';
 
 describe('BDD - Angular - Common - WidgetTrends', () => {
   let $rootScope, makeController;
