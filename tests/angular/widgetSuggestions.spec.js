@@ -4,12 +4,12 @@ import WidgetSuggestionsComponent from '../../source/assets/js/angular/common/wi
 import WidgetSuggestionsTemplate from '../../source/assets/js/angular/common/widget-suggestions/widgetSuggestions.html';
 
 describe('BDD - Angular - Common - WidgetSuggestions', () => {
-  let $rootScope, makeController, $http;
+  let $rootScope, makeController, twitterAPI;
 
   beforeEach(window.module(WidgetSuggestionsModule));
-  beforeEach(inject((_$rootScope_, _$http_) => {
+  beforeEach(inject((_$rootScope_, _twitterAPI_) => {
     $rootScope = _$rootScope_;
-    $http = _$http_;
+    twitterAPI = _twitterAPI_;
     makeController = () => {
       return new WidgetSuggestionsController();
     };

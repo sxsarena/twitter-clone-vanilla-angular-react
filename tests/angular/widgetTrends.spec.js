@@ -4,12 +4,12 @@ import WidgetTrendsComponent from '../../source/assets/js/angular/common/widget-
 import WidgetTrendsTemplate from '../../source/assets/js/angular/common/widget-trends/widgetTrends.html';
 
 describe('BDD - Angular - Common - WidgetTrends', () => {
-  let $rootScope, makeController, $http;
+  let $rootScope, makeController, twitterAPI;
 
   beforeEach(window.module(WidgetTrendsModule));
-  beforeEach(inject((_$rootScope_, _$http_) => {
+  beforeEach(inject((_$rootScope_, _twitterAPI_) => {
     $rootScope = _$rootScope_;
-    $http = _$http_;
+    twitterAPI = _twitterAPI_;
     makeController = () => {
       return new WidgetTrendsController();
     };
@@ -23,8 +23,6 @@ describe('BDD - Angular - Common - WidgetTrends', () => {
     // controller specs
     it('has a name property', () => {
       let controller = makeController();
-      console.log(controller);
-      console.log('entrou');
       expect(controller).to.have.property('name');
     });
   });
