@@ -1,6 +1,7 @@
 var express = require('express');
 var proxy = require('http-proxy-middleware');
 var request = require('request');
+var opener = require("opener");
 
 var app = express();
 
@@ -32,6 +33,23 @@ request(configToken, function (error, response, body) {
   app.listen(3000);
 });
 
+var configFlick = {
+  target: 'https://api.flickr.com/',
+  changeOrigin: true
+};
 
+var configFlickPhotos = {
+  target: 'https://www.flickr.com/',
+  changeOrigin: true
+};
+
+app.use('/services', proxy(configFlick));
+app.use('/photos', proxy(configFlickPhotos));
+
+
+
+console.log('Server running on http://localhost:3000/');
+
+opener("http://localhost:3000/");
 
 
