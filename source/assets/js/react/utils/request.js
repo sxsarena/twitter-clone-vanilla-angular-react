@@ -4,11 +4,9 @@ import { Promise } from 'es6-promise';
  * Request to the json type using XMLHttpRequest
  *
  * @param {Object} options - configuration for the request
- * @param {function} successHandler - for success in the request
- * @param {function} errorHandler - for failed requests
  *
  */
-export default function makeRequestJson(options, successHandler, errorHandler) {
+export default function makeRequestJson(options) {
   let xmlhttp  = new XMLHttpRequest();
   let headers  = options.headers;
   let dataSend = options.data || null;
