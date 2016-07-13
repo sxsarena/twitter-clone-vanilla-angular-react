@@ -13,7 +13,7 @@ export default class WidgetTrends extends Component {
   componentDidMount() {
     let me = this;
 
-    MakeRequestJson({ url: '/1.1/trends/place.json?id=23424768'}, (data) => {
+    MakeRequestJson({ url: '/1.1/trends/place.json?id=23424768'}).then((data) => {
       me.setState({
         data: data[0].trends
       });

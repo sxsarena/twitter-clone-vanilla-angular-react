@@ -1,6 +1,7 @@
 import makeRequestJson from '../utils/request';
 import { textToLinks, identifyFirstHashTag } from '../utils/miscellaneous';
 import { addClass, removeClass } from '../utils/manipulation';
+import { Promise } from 'es6-promise';
 
 /**
  * GetTimeline class.
@@ -15,8 +16,6 @@ export default class GetTimeline {
    * @property {DOM} $target
    */
   constructor(data, $target) {
-    this.lastId = data[data.length-1].id;
-
     this.$target = $target;
 
     this.getTweets(data, this.$target);
@@ -42,11 +41,11 @@ export default class GetTimeline {
    * @property {string} url
    */
   moreTweets() {
+    console.warn(this.lastId, 'moreTweets');
     let url = `/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5&max_id=${this.lastId}`;
     makeRequestJson({
       url: url
-    }, (data) => {
-      this.lastId = data[data.length-1].id;
+    }).then((data) => {
       removeClass(this.$target, 'loading');
       this.getTweets(data, this.$target);
     });
@@ -62,10 +61,20 @@ export default class GetTimeline {
     let html = '';
 
     for (let i = 0, len = tweets.length; i < len; i++) {
-      html += this.createTweet(tweets[i]);
-    }
+      ((tweet, index) => {
+        setTimeout(() => {
+          this.getImageHashTag(tweet.text).then((image) => {
+            tweet.flickr = image;
 
-    $target.innerHTML += html;
+            html += this.getTweet(tweet);
+            if(index === (tweets.length-1)){
+              this.lastId = tweets[tweets.length-1].id;
+              $target.innerHTML += html;
+            }
+          });
+        }, 5 * index);
+      })(tweets[i], i);
+    }
   }
 
   /**
@@ -74,26 +83,21 @@ export default class GetTimeline {
    * @property {string} tag
    */
   getImageHashTag(text){
-    let tag = identifyFirstHashTag(text);
-
-    makeRequestJson({
-      url:`/services/rest/?method=flickr.photos.search&api_key=ab5c79cebe606021a19c1d1d440342c1&tags=${tag}&per_page=1&format=json&nojsoncallback=1`
-    }, (data) => {
-      let str = `/photos/${data.photos.photo[0].owner}/${data.photos.photo[0].id}`;
-      return str;
-    }, () => {
-      let response = false;
-      return response;
+    return new Promise(function (resolve, reject) {
+      let tag = identifyFirstHashTag(text);
+      if(tag){
+        makeRequestJson({
+          url:`/services/rest/?method=flickr.photos.search&api_key=ab5c79cebe606021a19c1d1d440342c1&tags=${tag}&per_page=1&format=json&nojsoncallback=1`
+        }).then((data) => {
+          let str = `/1/${data.photos.photo[0].server}/${data.photos.photo[0].id}_${data.photos.photo[0].secret}.jpg`;
+          resolve(str);
+        }, (error) => {
+          reject(error);
+        });
+      } else {
+        resolve('');
+      }
     });
-  }
-
-  /**
-   *
-   * @param {Object} tweet
-   */
-  createTweet(tweet){
-    tweet.flick = this.getImageHashTag(tweet.text);
-    return this.getTweet(tweet);
   }
 
   /**
@@ -146,7 +150,6 @@ export default class GetTimeline {
         </nav>
       </div><!-- /tweet-footer -->
     </div><!-- /tweet -->`;
-
     return html;
   }
 }

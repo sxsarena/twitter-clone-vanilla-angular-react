@@ -14,7 +14,7 @@ export default class WidgetSuggestions extends Component {
   componentDidMount() {
     let me = this;
 
-    MakeRequestJson({ url: '/1.1/users/suggestions/governo.json'}, (data) => {
+    MakeRequestJson({ url: '/1.1/users/suggestions/governo.json'}).then((data) => {
       me.setState({
         data: data.users
       });

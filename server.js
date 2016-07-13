@@ -39,12 +39,12 @@ var configFlick = {
 };
 
 var configFlickPhotos = {
-  target: 'https://www.flickr.com/',
+  target: 'http://c1.staticflickr.com/',
   changeOrigin: true
 };
 
 app.use('/services', proxy(configFlick));
-app.use('/photos', proxy(configFlickPhotos));
+app.use('/1', proxy(configFlickPhotos));
 
 
 

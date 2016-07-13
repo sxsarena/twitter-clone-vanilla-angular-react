@@ -16,7 +16,7 @@ export default class ProfileCard extends Component {
   componentDidMount() {
     let me = this;
 
-    MakeRequestJson({ url: '/1.1/users/show.json?screen_name=americanascom'}, (data) => {
+    MakeRequestJson({ url: '/1.1/users/show.json?screen_name=americanascom'}).then((data) => {
       me.setState({
         data: data,
         avatar: me._setAvatar(data.profile_image_url),

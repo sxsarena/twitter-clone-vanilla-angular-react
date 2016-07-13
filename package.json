@@ -82,6 +82,7 @@
     "angular-mocks": "^1.5.7",
     "angular-ui-router": "^0.3.1",
     "classnames": "^2.2.5",
+    "es6-promise": "^3.2.1",
     "react": "^15.2.1",
     "react-addons-test-utils": "^15.2.1",
     "react-dom": "^15.2.1"

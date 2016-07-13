@@ -23,7 +23,7 @@ export default class Timeline extends Component {
   componentDidMount() {
     let me = this;
 
-    MakeRequestJson({url: '/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5'}, (data) => {
+    MakeRequestJson({url: '/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5'}).then((data) => {
       me.setState({
         data: data,
         lastId: data[data.length-1].id
@@ -56,7 +56,7 @@ export default class Timeline extends Component {
 
     MakeRequestJson({
       url: url
-    }, (data) => {
+    }).then((data) => {
       me.setState({
         lastId: data[data.length-1].id,
         data: me.state.data.concat(data)

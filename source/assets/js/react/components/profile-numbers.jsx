@@ -14,7 +14,7 @@ export default class ProfileNumbers extends Component {
   componentDidMount() {
     let me = this;
 
-    MakeRequestJson({ url: '/1.1/users/show.json?screen_name=americanascom'}, (data) => {
+    MakeRequestJson({ url: '/1.1/users/show.json?screen_name=americanascom'}).then((data) => {
       me.setState({
         followersCount  : thousandsFormatter(data.followers_count),
         friendsCount    : thousandsFormatter(data.friends_count),
