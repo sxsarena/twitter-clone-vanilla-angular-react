@@ -12,7 +12,7 @@ export default function makeRequestJson(options) {
   let dataSend = options.data || null;
   let method   = options.method || 'GET';
 
-  return new Promise(function(resolve, reject){
+  return new Promise((resolve, reject) => {
     xmlhttp.open(method, options.url, true);
 
     for (let header in headers) {
@@ -29,7 +29,7 @@ export default function makeRequestJson(options) {
       }
     };
 
-    xmlhttp.onerror = function() {
+    xmlhttp.onerror = () => {
       reject(xmlhttp.statusText);
     };
 

@@ -104,6 +104,7 @@ export default class GetTimeline {
     }
 
     return Promise.all([newtweets, tasks]).then( (output) => {
+      console.warn(newtweets);
       return newtweets;
     });
   }
@@ -114,13 +115,25 @@ export default class GetTimeline {
    * @property {string} tag
    */
   getImageHashTag(tweet){
-    return new Promise(function (resolve, reject) {
-      let str = '';
-      let tag = identifyFirstHashTag(tweet.text);
-      let task;
+    let str = '';
+    let tag = identifyFirstHashTag(tweet.text);
 
-      tweet.flickr = str;
-      resolve(tweet);
+    return new Promise((resolve, reject) => {
+      if(tag){
+        makeRequestJson({
+          url:`/services/rest/?method=flickr.photos.search&api_key=ab5c79cebe606021a19c1d1d440342c1&tags=${tag}&per_page=1&format=json&nojsoncallback=1`
+        }).then((data) => {
+          str = `/1/${data.photos.photo[0].server}/${data.photos.photo[0].id}_${data.photos.photo[0].secret}.jpg`;
+          tweet.flickr = str;
+          resolve(tweet);
+        }).catch( () => {
+          tweet.flickr = str;
+          resolve(tweet);
+        });
+      } else {
+        tweet.flickr = str;
+        resolve(tweet);
+      }
     });
   }
 
