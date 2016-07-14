@@ -76,7 +76,7 @@ export default class GetTimeline {
       return false;
     }
 
-    console.warn(tweets);
+    console.warn(tweets, 'tweets');
 
     this.getTweetAndImage(tweets).then( (output) => {
       for (let i = 0, len = output.length; i < len; i++) {
@@ -96,17 +96,22 @@ export default class GetTimeline {
   getTweetAndImage(tweets){
     let newtweets = [];
     let tasks = [];
+    let tweetWithImage;
 
     for (let i = 0, len = tweets.length; i < len; i++) {
-      tasks[i] = this.getImageHashTag(tweets[i]).then( tweet => {
+      tweetWithImage = this.getImageHashTag(tweets[i]).then( tweet => {
         newtweets.push(tweet);
       });
+      tasks.push(tweetWithImage);
     }
 
-    return Promise.all([newtweets, tasks]).then( (output) => {
-      console.warn(newtweets);
+    return Promise.all([tasks[tweets.length-1]]).then( (output) => {
+      console.warn(output, 'output');
+      console.warn('tweets completo');
+
       return newtweets;
     });
+
   }
 
   /**
@@ -122,15 +127,18 @@ export default class GetTimeline {
       if(tag){
         makeRequestJson({
           url:`/services/rest/?method=flickr.photos.search&api_key=ab5c79cebe606021a19c1d1d440342c1&tags=${tag}&per_page=1&format=json&nojsoncallback=1`
-        }).then((data) => {
+        }).then( data => {
           str = `/1/${data.photos.photo[0].server}/${data.photos.photo[0].id}_${data.photos.photo[0].secret}.jpg`;
           tweet.flickr = str;
+          console.warn('tweet carregado');
           resolve(tweet);
         }).catch( () => {
+          console.warn('tweet carregado');
           tweet.flickr = str;
           resolve(tweet);
         });
       } else {
+        console.warn('tweet carregado');
         tweet.flickr = str;
         resolve(tweet);
       }
