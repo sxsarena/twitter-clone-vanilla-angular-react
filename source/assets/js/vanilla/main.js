@@ -12,7 +12,7 @@ makeRequestJson({
 
 // &max_id=
 makeRequestJson({
-  url:'/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5'
+  url:'/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1'
 }).then((data) => {
   let $element = document.getElementById('js-tweets');
   new GetTimeline(data, $element);

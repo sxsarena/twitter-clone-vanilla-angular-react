@@ -7,7 +7,6 @@ import { Promise } from 'es6-promise';
  * GetTimeline class.
  */
 export default class GetTimeline {
-
   /**
    * create instance.
    * @param {Object} data - timeline data
@@ -17,8 +16,10 @@ export default class GetTimeline {
    */
   constructor(data, $target) {
     this.$target = $target;
+    this.amount   = 5;
+    this.lastId  = data[data.length-1].id;
 
-    this.getTweets(data, this.$target);
+    this.getTweets(data);
     this.infinityScroll();
   }
 
@@ -38,43 +39,73 @@ export default class GetTimeline {
 
   /**
    *
+   * @param {oldTweets} Array
    * @property {string} url
    */
-  moreTweets() {
-    console.warn(this.lastId, 'moreTweets');
-    let url = `/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&count=5&max_id=${this.lastId}`;
+  moreTweets(oldTweets) {
+    let url = `/1.1/statuses/user_timeline.json?screen_name=americanascom&include_rts=1&max_id=${this.lastId}`;
     makeRequestJson({
       url: url
     }).then((data) => {
+      this.lastId = data[data.length-1].id;
       removeClass(this.$target, 'loading');
-      this.getTweets(data, this.$target);
+
+      if(oldTweets){
+        this.getTweets(oldTweets.concat(data));
+      } else {
+        this.getTweets(data);
+      }
     });
   }
 
   /**
    *
    * @param {Array} tweets
-   * @param {DOM} $target
    * @property {string} html
    */
-  getTweets(tweets, $target){
+  getTweets(tweets){
     let html = '';
 
-    for (let i = 0, len = tweets.length; i < len; i++) {
-      ((tweet, index) => {
-        setTimeout(() => {
-          this.getImageHashTag(tweet.text).then((image) => {
-            tweet.flickr = image;
+    // new array without the 'in reply'
+    tweets = tweets.filter( item => item.in_reply_to_user_id === null );
 
-            html += this.getTweet(tweet);
-            if(index === (tweets.length-1)){
-              this.lastId = tweets[tweets.length-1].id;
-              $target.innerHTML += html;
-            }
-          });
-        }, 5 * index);
-      })(tweets[i], i);
+    // if insufficient
+    if(tweets.length < this.amount ){
+      addClass(this.$target, 'loading');
+      this.moreTweets(tweets);
+      return false;
     }
+
+    console.warn(tweets);
+
+    this.getTweetAndImage(tweets).then( (output) => {
+      for (let i = 0, len = output.length; i < len; i++) {
+        html += this.getTweet(output[i]);
+      }
+
+      this.$target.innerHTML += html;
+    });
+  }
+
+  /**
+   *
+   * @param {Array} tweets
+   * @property {Array} iterations
+   * @property {Object} tweet
+   */
+  getTweetAndImage(tweets){
+    let newtweets = [];
+    let tasks = [];
+
+    for (let i = 0, len = tweets.length; i < len; i++) {
+      tasks[i] = this.getImageHashTag(tweets[i]).then( tweet => {
+        newtweets.push(tweet);
+      });
+    }
+
+    return Promise.all([newtweets, tasks]).then( (output) => {
+      return newtweets;
+    });
   }
 
   /**
@@ -82,21 +113,14 @@ export default class GetTimeline {
    * @param {string} text
    * @property {string} tag
    */
-  getImageHashTag(text){
+  getImageHashTag(tweet){
     return new Promise(function (resolve, reject) {
-      let tag = identifyFirstHashTag(text);
-      if(tag){
-        makeRequestJson({
-          url:`/services/rest/?method=flickr.photos.search&api_key=ab5c79cebe606021a19c1d1d440342c1&tags=${tag}&per_page=1&format=json&nojsoncallback=1`
-        }).then((data) => {
-          let str = `/1/${data.photos.photo[0].server}/${data.photos.photo[0].id}_${data.photos.photo[0].secret}.jpg`;
-          resolve(str);
-        }, (error) => {
-          reject(error);
-        });
-      } else {
-        resolve('');
-      }
+      let str = '';
+      let tag = identifyFirstHashTag(tweet.text);
+      let task;
+
+      tweet.flickr = str;
+      resolve(tweet);
     });
   }
 
