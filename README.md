@@ -1,6 +1,4 @@
-# B2W Challenge
-
-O projeto principal foi feito em VanillaJS, por preferir mostrar o meu código puro. Mas também fiz uma versão com ReactJS e uma com AngularJS, por saber que esse tipo de projeto precisa de um desses recursos e para mostrar um pouco do meu código utilizando os mesmos. Documentações e testes(TDD e BDD para a versão VanillaJS..e básicos para as outras versões), se encontram nos links abaixo.
+# Twitter clone
 
 ## Install, running and documentation
 
