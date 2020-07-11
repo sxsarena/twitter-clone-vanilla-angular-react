@@ -1,7 +1,7 @@
 {
-  "name": "frontend-interview",
+  "name": "witter-clone-vanilla-angular-react",
   "version": "0.0.2",
-  "description": "Challenge B2W",
+  "description": "witter-clone-vanilla-angular-react",
   "main": "index.js",
   "scripts": {
     "build:dev": "webpack-dev-server --config ./webpack.config.dev.js --progress --colors --inline --display-error-details",
@@ -16,19 +16,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hemersonvianna/frontend-interview.git"
+    "url": "git+https://github.com/sxsarena/twitter-clone-vanilla-angular-react.git"
   },
   "keywords": [
     "javascript",
     "interview",
     "front-end"
   ],
-  "author": "Hemerson Vianna <hemerson.lourenco@gmail.com> (http://hemersonvianna.com)",
+  "author": "Hemerson Vianna <hemerson.lourenco@gmail.com> (https://nerdcalistenico.com.br)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/hemersonvianna/frontend-interview/issues"
+    "url": "https://github.com/sxsarena/twitter-clone-vanilla-angular-react/issues"
   },
-  "homepage": "https://github.com/hemersonvianna/frontend-interview#readme",
+  "homepage": "https://github.com/sxsarena/twitter-clone-vanilla-angular-react#readme",
   "devDependencies": {
     "babel": "^6.5.2",
     "babel-core": "^6.10.4",
